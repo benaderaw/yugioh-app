@@ -2,7 +2,6 @@ import { useState } from "react";
 import "./App.css";
 import Navbar from "./components/Navbar";
 import Search from "./components/Search";
-
 import Error from "./components/Error";
 import Loading from "./components/Loading";
 import Main from "./components/Main";
@@ -17,6 +16,8 @@ export default function App() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [selectedID, setSelectedID] = useState("");
+
+  // console.log(selectedID);
 
   return (
     <div className="App">
@@ -43,7 +44,7 @@ export default function App() {
         </Section>
 
         <Section>
-          <MonsterDetails />
+          <MonsterDetails selectedID={selectedID} monsters={monsters} />
         </Section>
       </Main>
     </div>

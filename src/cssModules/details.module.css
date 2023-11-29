@@ -1,0 +1,21 @@
+.details {
+  color: #fff;
+  font-size: 0.9rem;
+  background-color: rgb(79, 79, 79);
+  padding: 5px 15px;
+  border-radius: 500px;
+}
+
+.details span {
+  display: flex;
+  align-items: center;
+}
+
+.lvlText {
+  margin-right: 7px;
+}
+
+.details img {
+  margin-left: 4px;
+  width: 0.9rem;
+}
