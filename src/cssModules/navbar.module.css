@@ -1,0 +1,57 @@
+.navbarContainer {
+  padding: 15px 20px;
+  background-color: #74959a;
+  border-radius: 15px;
+  margin-bottom: 2rem;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cards {
+  display: flex;
+  justify-content: space-between;
+
+  margin-bottom: 2rem;
+}
+
+.card {
+  width: 13rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.btnContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.btnContainer p {
+  color: #fff;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.backBtn,
+.nextBtn {
+  border: none;
+  padding: 0.8rem 1.1rem;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.active {
+  background-color: bisque;
+  color: #000;
+}
