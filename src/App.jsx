@@ -63,3 +63,11 @@ export default function App() {
     </div>
   );
 }
+
+// git add .
+// git commit -m "bla bla bla"
+// git push -> must push to git to show committed in remote repository
+// git branch [branch name] -> creates a new branch but dose no enter it, use git checkout [branch name] to enter the new branch if desired
+// git checkout -b [branch name] -> will create new branch and switch to the new branch, if the branch name already exists it will not work
+// git checkout [branch name] -> switch to the branch
+// git branch -d [branch name] -> deletes the branch, needs to not be in the branch you want to delete
