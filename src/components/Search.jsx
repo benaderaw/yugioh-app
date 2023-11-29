@@ -8,30 +8,38 @@ export default function Search({
   name,
   setName,
   setMonsters,
+  setError,
+  setLoading,
 }) {
   useEffect(() => {
     const fetchData = async function () {
       try {
+        setError("");
+        setLoading(true);
+
         if (name === "") return;
 
         const res = await fetch(
-          `https://db.ygoprodeck.com/api/v7/cardinfo.php?archetype=${name}`
+          `https://db.ygoprodeck.com/api/v7/cardinfo.php?fname=${name}`
         );
 
-        if (!res.ok) throw new Error("⛔️ Something went wrong");
+        if (!res.ok) throw new Error(`💥 Archetype for ${name} not found`);
 
         const { data } = await res.json();
 
         localStorage.setItem("monsters", JSON.stringify(data));
 
         setMonsters(JSON.parse(localStorage.getItem("monsters")));
-      } catch (error) {
-        console.error(error);
+      } catch (err) {
+        setError(err);
+        console.error(err);
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchData();
-  }, [name, setMonsters]);
+  }, [name, setMonsters, setError]);
 
   // onChange - search input
   function handelSearch(e) {

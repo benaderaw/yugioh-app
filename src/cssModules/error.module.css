@@ -1,0 +1,15 @@
+.error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 2rem;
+  margin-top: 2rem;
+  color: white;
+}
+
+.error h2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
