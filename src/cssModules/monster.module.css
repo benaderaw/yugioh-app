@@ -1,0 +1,12 @@
+.monstersContainer {
+  background-color: #3e3e42;
+  width: 60rem;
+  height: 77vh;
+  border-radius: 15px;
+  padding: 20px 40px;
+  overflow: scroll;
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}

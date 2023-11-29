@@ -4,10 +4,10 @@ export default function Nav() {
   return (
     <ul href="#" className={styles.nav}>
       <li>
-        <a href="#">Home</a>
+        <a href="#">HOME</a>
       </li>
       <li>
-        <a href="#">My Collection</a>
+        <a href="#">COLLECTION</a>
       </li>
     </ul>
   );
