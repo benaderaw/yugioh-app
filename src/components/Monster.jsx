@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
 import styles from "../cssModules/card.module.css";
 
-export default function Monster({ monster, setSelectedID }) {
+export default function Monster({ monster, setSelected }) {
   function handleSelectIDClick() {
-    setSelectedID(monster.id);
+    setSelected(monster);
   }
 
   return (

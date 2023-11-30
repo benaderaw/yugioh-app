@@ -2,15 +2,11 @@
 import styles from "../cssModules/monster.module.css";
 import Monster from "./Monster";
 
-export default function Monsters({ monsters, setSelectedID }) {
+export default function Monsters({ monsters, setSelected }) {
   return (
     <ul className={styles.monstersContainer}>
       {monsters.map((monster) => (
-        <Monster
-          key={monster.id}
-          monster={monster}
-          setSelectedID={setSelectedID}
-        />
+        <Monster key={monster.id} monster={monster} setSelected={setSelected} />
       ))}
     </ul>
   );

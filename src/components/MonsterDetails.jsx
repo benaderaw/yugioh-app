@@ -1,30 +1,12 @@
 /* eslint-disable react/prop-types */
-import { useEffect, useState } from "react";
 import styles from "../cssModules/monsterDetails.module.css";
 import Details from "./Details";
-import Loading from "./Loading";
+import MarketPrice from "./MarketPrice";
 
-export default function MonsterDetails({ selectedID, monsters }) {
-  const [selectedMonster, setSelectedMonster] = useState({});
-  const [detailsLoading, setDetailsLoading] = useState(false);
-
-  // useEffect -
-  useEffect(() => {
-    setDetailsLoading(true);
-
-    const selected = monsters.filter((monster) => {
-      return monster.id === selectedID;
-    });
-
-    setSelectedMonster({ ...selected?.at(0) });
-    setDetailsLoading(false);
-  }, [selectedID, monsters]);
-
-  // console.log(selectedMonster);
-
+export default function MonsterDetails({ selected }) {
   const {
     id,
-    image = selectedMonster.card_images?.at(0).image_url,
+    image = selected.card_images?.at(0).image_url,
     name,
     desc,
     atk,
@@ -34,7 +16,7 @@ export default function MonsterDetails({ selectedID, monsters }) {
     level,
     race,
     type,
-  } = selectedMonster;
+  } = selected;
 
   const gods = function () {
     // Slifer
@@ -47,15 +29,16 @@ export default function MonsterDetails({ selectedID, monsters }) {
     if (id === 10000010 || id === 10000080 || id === 10000090)
       return styles.detailsContainerRa;
 
+    //10000040
+    if (id === 10000040) return styles.detailsContainerHolactie;
+
     return styles.detailsContainer;
   };
 
   return (
     <>
-      {detailsLoading && <Loading />}
-
       <div className={gods()}>
-        {Object.keys(selectedMonster).length !== 0 && !detailsLoading && (
+        {Object.keys(selected).length !== 0 && (
           <>
             <div className={styles.detailsImgAndNameBox}>
               <img src={image} alt={name} className={styles.detailsImg} />
@@ -78,6 +61,8 @@ export default function MonsterDetails({ selectedID, monsters }) {
               {race && <Details title={"Race"} detail={race} />}
               {type && <Details title={"Type"} detail={type} />}
             </div>
+
+            <MarketPrice selected={selected} />
           </>
         )}
       </div>

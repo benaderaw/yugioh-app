@@ -1,16 +1,17 @@
 .card {
+  /* height: 21.8rem; */
   list-style: none;
   margin-bottom: 1rem;
   padding: 10px;
   cursor: pointer;
   border-radius: 5px;
   background-color: #202020;
+  transition: ease-in-out, 0.2s;
 
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1rem;
-  transition: ease-in-out, 0.2s;
 }
 
 .card:hover {

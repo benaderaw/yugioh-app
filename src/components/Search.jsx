@@ -23,7 +23,8 @@ export default function Search({
           `https://db.ygoprodeck.com/api/v7/cardinfo.php?fname=${name}`
         );
 
-        if (!res.ok) throw new Error(`💥 Archetype for ${name} not found`);
+        if (!res.ok)
+          throw new Error(`💥 No card by the name ${name} was found`);
 
         const { data } = await res.json();
 
@@ -39,7 +40,7 @@ export default function Search({
     };
 
     fetchData();
-  }, [name, setMonsters, setError]);
+  }, [name, setMonsters, setError, setLoading]);
 
   // onChange - search input
   function handelSearch(e) {

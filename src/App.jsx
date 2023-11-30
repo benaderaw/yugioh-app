@@ -15,9 +15,9 @@ export default function App() {
   const [monsters, setMonsters] = useState([]);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  const [selectedID, setSelectedID] = useState("");
+  const [selected, setSelected] = useState("");
 
-  // console.log(selectedID);
+  console.log(selected);
 
   return (
     <div className="App">
@@ -39,12 +39,12 @@ export default function App() {
           {loading && <Loading />}
           {error && !loading && <Error error={error} />}
           {!error && !loading && (
-            <Monsters monsters={monsters} setSelectedID={setSelectedID} />
+            <Monsters monsters={monsters} setSelected={setSelected} />
           )}
         </Section>
 
         <Section>
-          <MonsterDetails selectedID={selectedID} monsters={monsters} />
+          <MonsterDetails selected={selected} monsters={monsters} />
         </Section>
       </Main>
     </div>
