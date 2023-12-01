@@ -18,7 +18,11 @@ export default function App() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [selected, setSelected] = useState("");
-  const [collection, setCollection] = useState([]);
+  const [collection, setCollection] = useState(
+    JSON.parse(localStorage.getItem("collections")) === null
+      ? []
+      : JSON.parse(localStorage.getItem("collections"))
+  );
   const [showCollection, setShowCollection] = useState(false);
 
   return (
@@ -43,7 +47,11 @@ export default function App() {
           {loading && <Loading />}
           {error && !loading && <Error error={error} />}
           {showCollection ? (
-            <Collections setSelected={setSelected} collection={collection} />
+            <Collections
+              setSelected={setSelected}
+              collection={collection}
+              setShowCollection={setShowCollection}
+            />
           ) : (
             !error &&
             !loading && (

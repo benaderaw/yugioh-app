@@ -3,9 +3,63 @@
   width: 60rem;
   height: 77vh;
   border-radius: 15px;
-  padding: 20px 40px;
   overflow: scroll;
 
+  position: relative;
+}
+
+.collectionTitleBox {
+  background-color: #3e3e42;
+  border-bottom: 2px solid #4f4f55;
+  padding: 20px 40px;
+
+  position: sticky;
+  top: 0;
+
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.monstersContainer h1 {
+  color: #fff;
+  font-size: 2rem;
+
+  /* position: fixed; */
+}
+
+.backBtn {
+  font-weight: bold;
+  font-size: 1rem;
+  background-color: #efd981;
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: ease-in-out 0.2s;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.backBtn:hover {
+  background-color: #eed05a;
+}
+
+.monstersContainer p {
+  color: #fff;
+  font-size: 1rem;
+  padding-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid #4f4f55;
+}
+
+.monstersBox {
+  padding: 20px 40px;
+  overflow: scroll;
+}
+
+.monstersList {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1.5rem;

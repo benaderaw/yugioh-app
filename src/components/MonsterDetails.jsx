@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 // import { useState } from "react";
+import { useEffect } from "react";
 import styles from "../cssModules/monsterDetails.module.css";
 import Details from "./Details";
 import MarketPrice from "./MarketPrice";
@@ -40,8 +41,15 @@ export default function MonsterDetails({
     return styles.detailsContainer;
   };
 
+  // useEffect - update and store collections to local storage
+  useEffect(() => {
+    localStorage.setItem("collections", JSON.stringify(collection));
+  }, [collection]);
+
+  // derived-state - cheek if selected card is already in collection
   const isAdded = collection.some((card) => card.id === selected.id);
 
+  // onClick - add or remove cards to your collection
   function handleAddToOrRemoveFromCollection() {
     if (isAdded) {
       return setCollection(
@@ -51,18 +59,10 @@ export default function MonsterDetails({
       );
     }
 
-    console.log(
-      isAdded &&
-        collection.filter((card) => {
-          return card.id !== selected.id;
-        })
-    );
-
-    // if (collection.some((card) => card.id === selected.id)) return;
     setCollection([...collection, selected]);
   }
 
-  console.log(collection);
+  // console.log(collection);
 
   return (
     <>
@@ -77,7 +77,7 @@ export default function MonsterDetails({
                 onClick={handleAddToOrRemoveFromCollection}
                 className={isAdded ? styles.added : styles.add}
               >
-                {isAdded ? "Remove from collection" : "Add to Collection"}
+                {isAdded ? "Remove from Collection" : "Add to Collection"}
               </button>
 
               <div className={styles.descBox}>

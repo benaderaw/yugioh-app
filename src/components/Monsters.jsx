@@ -4,10 +4,19 @@ import Monster from "./Monster";
 
 export default function Monsters({ monsters, setSelected }) {
   return (
-    <ul className={styles.monstersContainer}>
-      {monsters.map((monster) => (
-        <Monster key={monster.id} monster={monster} setSelected={setSelected} />
-      ))}
-    </ul>
+    <div className={styles.monstersContainer}>
+      {/* <p>{monsters.length} results found</p> */}
+      <div className={styles.monstersBox}>
+        <ul className={styles.monstersList}>
+          {monsters.map((monster) => (
+            <Monster
+              key={monster.id}
+              monster={monster}
+              setSelected={setSelected}
+            />
+          ))}
+        </ul>
+      </div>
+    </div>
   );
 }
