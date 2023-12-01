@@ -14,8 +14,6 @@ export default function Details({ title, detail, stars }) {
     }
   }, [stars]);
 
-  console.log(levelStars);
-
   return (
     <div className={styles.details}>
       <span>

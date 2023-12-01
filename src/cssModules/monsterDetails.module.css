@@ -72,6 +72,32 @@
   gap: 1.3rem;
 }
 
+.detailsImgAndNameBox button {
+  font-size: 1.1rem;
+  font-weight: bold;
+  width: 90%;
+  padding: 15px 0;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: ease-in-out 0.2s;
+}
+
+.add {
+  background-color: rgb(255, 204, 50);
+}
+
+.add:hover {
+  background-color: #ffbf00;
+}
+
+.added {
+  background-color: rgb(97, 97, 97);
+}
+
+.added:hover {
+  background-color: #df4b4b;
+}
+
 .detailsImg {
   width: 95%;
 }

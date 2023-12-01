@@ -1,9 +1,14 @@
 /* eslint-disable react/prop-types */
+// import { useState } from "react";
 import styles from "../cssModules/monsterDetails.module.css";
 import Details from "./Details";
 import MarketPrice from "./MarketPrice";
 
-export default function MonsterDetails({ selected }) {
+export default function MonsterDetails({
+  selected,
+  collection,
+  setCollection,
+}) {
   const {
     id,
     image = selected.card_images?.at(0).image_url,
@@ -35,6 +40,30 @@ export default function MonsterDetails({ selected }) {
     return styles.detailsContainer;
   };
 
+  const isAdded = collection.some((card) => card.id === selected.id);
+
+  function handleAddToOrRemoveFromCollection() {
+    if (isAdded) {
+      return setCollection(
+        collection.filter((card) => {
+          return card.id !== selected.id;
+        })
+      );
+    }
+
+    console.log(
+      isAdded &&
+        collection.filter((card) => {
+          return card.id !== selected.id;
+        })
+    );
+
+    // if (collection.some((card) => card.id === selected.id)) return;
+    setCollection([...collection, selected]);
+  }
+
+  console.log(collection);
+
   return (
     <>
       <div className={gods()}>
@@ -43,6 +72,14 @@ export default function MonsterDetails({ selected }) {
             <div className={styles.detailsImgAndNameBox}>
               <img src={image} alt={name} className={styles.detailsImg} />
               <h2 className={styles.detailsName}>{name}</h2>
+
+              <button
+                onClick={handleAddToOrRemoveFromCollection}
+                className={isAdded ? styles.added : styles.add}
+              >
+                {isAdded ? "Remove from collection" : "Add to Collection"}
+              </button>
+
               <div className={styles.descBox}>
                 <p>
                   <em>{desc}</em>

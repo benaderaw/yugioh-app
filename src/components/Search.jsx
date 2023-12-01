@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import styles from "../cssModules/search.module.css";
 import { useEffect } from "react";
+import Section from "./Section";
 
 export default function Search({
   query,
@@ -10,6 +11,7 @@ export default function Search({
   setMonsters,
   setError,
   setLoading,
+  setShowCollection,
 }) {
   useEffect(() => {
     const fetchData = async function () {
@@ -52,6 +54,7 @@ export default function Search({
     e.preventDefault();
 
     setName(query);
+    setShowCollection(false);
   }
 
   return (

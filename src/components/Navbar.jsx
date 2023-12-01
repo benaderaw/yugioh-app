@@ -1,5 +1,4 @@
 import Logo from "./Logo";
-import Nav from "./Nav";
 
 // CSS MODULES
 import styles from "../cssModules/navbar.module.css";
@@ -10,7 +9,6 @@ export default function Navbar({ children }) {
     <div className={styles.navbarContainer}>
       <Logo />
       {children}
-      <Nav />
     </div>
   );
 }
