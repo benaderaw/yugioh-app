@@ -2,7 +2,7 @@
 import styles from "../cssModules/filters.module.css";
 
 export default function Filters({ filterName, filterType, setFilterBy }) {
-  // onChange
+  // onChange -
   function handleFilter(e) {
     setFilterBy([e.target]);
   }
