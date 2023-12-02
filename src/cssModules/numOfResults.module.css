@@ -1,0 +1,52 @@
+.resultLengthContainer {
+  background-color: #3e3e42;
+
+  position: sticky;
+  top: 0;
+}
+
+.resultLengthBox {
+  padding: 20px 40px;
+  border-bottom: 2px solid #4f4f55;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.filterIcon {
+  color: #fff;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: ease-in-out 0.2s;
+}
+
+.filterIconOpen {
+  color: #ffbf00;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: ease-in-out 0.2s;
+}
+
+.filterIcon:hover {
+  color: #ffbf00;
+}
+
+.filterBox {
+  background: #242424;
+  padding: 20px 40px;
+  border-radius: 0 0 10px 10px;
+
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.filterBox button {
+  background-color: #efd981;
+  padding: 0.5rem;
+  border-radius: 50px;
+  width: fit-content;
+  cursor: pointer;
+}

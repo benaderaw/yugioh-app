@@ -15,6 +15,7 @@ export default function App() {
   const [query, setQuery] = useState("");
   const [name, setName] = useState("");
   const [monsters, setMonsters] = useState([]);
+  const [copyMonsters, setCopyMonsters] = useState([]);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [selected, setSelected] = useState("");
@@ -24,6 +25,7 @@ export default function App() {
       : JSON.parse(localStorage.getItem("collections"))
   );
   const [showCollection, setShowCollection] = useState(false);
+  const [filterBy, setFilterBy] = useState([]);
 
   return (
     <div className="App">
@@ -35,6 +37,7 @@ export default function App() {
           setName={setName}
           monsters={monsters}
           setMonsters={setMonsters}
+          setCopyMonsters={setCopyMonsters}
           setError={setError}
           setLoading={setLoading}
           setShowCollection={setShowCollection}
@@ -55,7 +58,16 @@ export default function App() {
           ) : (
             !error &&
             !loading && (
-              <Monsters monsters={monsters} setSelected={setSelected} />
+              <Monsters
+                monsters={monsters}
+                setMonsters={setMonsters}
+                copyMonsters={copyMonsters}
+                setCopyMonsters={setCopyMonsters}
+                setSelected={setSelected}
+                name={name}
+                filterBy={filterBy}
+                setFilterBy={setFilterBy}
+              />
             )
           )}
         </Section>

@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 import styles from "../cssModules/search.module.css";
 import { useEffect } from "react";
-import Section from "./Section";
 
 export default function Search({
   query,
@@ -9,6 +8,7 @@ export default function Search({
   name,
   setName,
   setMonsters,
+  setCopyMonsters,
   setError,
   setLoading,
   setShowCollection,
@@ -33,6 +33,7 @@ export default function Search({
         localStorage.setItem("monsters", JSON.stringify(data));
 
         setMonsters(JSON.parse(localStorage.getItem("monsters")));
+        setCopyMonsters(JSON.parse(localStorage.getItem("monsters")));
       } catch (err) {
         setError(err);
         console.error(err);
@@ -42,7 +43,7 @@ export default function Search({
     };
 
     fetchData();
-  }, [name, setMonsters, setError, setLoading]);
+  }, [name, setMonsters, setCopyMonsters, setError, setLoading]);
 
   // onChange - search input
   function handelSearch(e) {

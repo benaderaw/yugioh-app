@@ -1,11 +1,30 @@
 /* eslint-disable react/prop-types */
 import styles from "../cssModules/monster.module.css";
 import Monster from "./Monster";
+import NumOfResults from "./NumOfResults";
 
-export default function Monsters({ monsters, setSelected }) {
+export default function Monsters({
+  monsters,
+  setMonsters,
+  setSelected,
+  name,
+  filterBy,
+  setFilterBy,
+  copyMonsters,
+  setCopyMonsters,
+}) {
   return (
     <div className={styles.monstersContainer}>
-      {/* <p>{monsters.length} results found</p> */}
+      <NumOfResults
+        monsters={monsters}
+        setMonsters={setMonsters}
+        name={name}
+        filterBy={filterBy}
+        setFilterBy={setFilterBy}
+        copyMonsters={copyMonsters}
+        setCopyMonsters={setCopyMonsters}
+      />
+
       <div className={styles.monstersBox}>
         <ul className={styles.monstersList}>
           {monsters.map((monster) => (
