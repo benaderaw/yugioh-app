@@ -43,10 +43,19 @@
   gap: 1rem;
 }
 
-.filterBox button {
+.applyFilterBtn,
+.resetFilterBtn {
   background-color: #efd981;
-  padding: 0.5rem;
-  border-radius: 50px;
+  padding: 10px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  border-radius: 5px;
   width: fit-content;
   cursor: pointer;
+  transition: ease-in-out 0.2s;
+}
+
+.applyFilterBtn:hover,
+.resetFilterBtn:hover {
+  background-color: #eccb44;
 }

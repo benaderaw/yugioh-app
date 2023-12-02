@@ -25,7 +25,6 @@ export default function App() {
       : JSON.parse(localStorage.getItem("collections"))
   );
   const [showCollection, setShowCollection] = useState(false);
-  const [filterBy, setFilterBy] = useState([]);
 
   return (
     <div className="App">
@@ -65,8 +64,8 @@ export default function App() {
                 setCopyMonsters={setCopyMonsters}
                 setSelected={setSelected}
                 name={name}
-                filterBy={filterBy}
-                setFilterBy={setFilterBy}
+                // filterBy={filterBy}
+                // setFilterBy={setFilterBy}
               />
             )
           )}

@@ -8,8 +8,8 @@ export default function Monsters({
   setMonsters,
   setSelected,
   name,
-  filterBy,
-  setFilterBy,
+  // filterBy,
+  // setFilterBy,
   copyMonsters,
   setCopyMonsters,
 }) {
@@ -19,8 +19,8 @@ export default function Monsters({
         monsters={monsters}
         setMonsters={setMonsters}
         name={name}
-        filterBy={filterBy}
-        setFilterBy={setFilterBy}
+        // filterBy={filterBy}
+        // setFilterBy={setFilterBy}
         copyMonsters={copyMonsters}
         setCopyMonsters={setCopyMonsters}
       />
