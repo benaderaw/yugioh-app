@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import styles from "../cssModules/monster.module.css";
 import Monster from "./Monster";
+import NoResultsFound from "./NoResultsFound";
 import NumOfResults from "./NumOfResults";
 
 export default function Monsters({
@@ -8,22 +9,31 @@ export default function Monsters({
   setMonsters,
   setSelected,
   name,
-  // filterBy,
-  // setFilterBy,
   copyMonsters,
   setCopyMonsters,
+  showFilter,
+  activeFilter,
+  setActiveFilter,
+  filterBy,
+  setFilterBy,
 }) {
   return (
     <div className={styles.monstersContainer}>
-      <NumOfResults
-        monsters={monsters}
-        setMonsters={setMonsters}
-        name={name}
-        // filterBy={filterBy}
-        // setFilterBy={setFilterBy}
-        copyMonsters={copyMonsters}
-        setCopyMonsters={setCopyMonsters}
-      />
+      {showFilter && (
+        <NumOfResults
+          monsters={monsters}
+          setMonsters={setMonsters}
+          name={name}
+          copyMonsters={copyMonsters}
+          setCopyMonsters={setCopyMonsters}
+          activeFilter={activeFilter}
+          setActiveFilter={setActiveFilter}
+          filterBy={filterBy}
+          setFilterBy={setFilterBy}
+        />
+      )}
+
+      {monsters.length === 0 && showFilter && <NoResultsFound />}
 
       <div className={styles.monstersBox}>
         <ul className={styles.monstersList}>

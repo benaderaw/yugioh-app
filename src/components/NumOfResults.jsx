@@ -8,109 +8,18 @@ export default function NumOfResults({
   monsters,
   setMonsters,
   name,
-  // filterBy,
-  // setFilterBy,
   copyMonsters,
   setCopyMonsters,
+  // activeFilter,
+  // setActiveFilter,
+  filterBy,
+  setFilterBy,
 }) {
   const [showFilter, setShowFilter] = useState(false);
-  const [type, setType] = useState([]);
-  const [attribute, setAttribute] = useState([]);
-  const [race, setRace] = useState([]);
-  const [archetypes, setArchetypes] = useState([]);
-  const [filterBy, setFilterBy] = useState({
-    type: null,
-    attribute: null,
-    race: null,
-    archetype: null,
-  });
 
-  // create an array from the filter types (filter types passed as argument)
-  const filters = function (filterType) {
-    return Array.from(
-      new Set(
-        copyMonsters
-          .map((monster) => {
-            return monster[filterType];
-          })
-          .filter((filters) => filters)
-      )
-    );
-  };
-
-  // onClick - sets filters
+  // onClick - show filters
   function handleShowFilter() {
-    setType(filters("type"));
-    setAttribute(filters("attribute"));
-    setRace(filters("race"));
-    setArchetypes(filters("archetype"));
     setShowFilter(!showFilter);
-  }
-
-  // onClick - apply filters
-  function handleApplyFilters() {
-    const filterTypes = Object.values(filterBy).filter((fill) => fill);
-
-    // no filter
-    if (filterTypes.length === 0) {
-      setMonsters(JSON.parse(localStorage.getItem("monsters")));
-      return;
-    }
-
-    // one filter
-    if (filterTypes.length === 1) {
-      const filtered = copyMonsters.filter((monster) => {
-        return Object.values(monster).includes(filterTypes.at(0));
-      });
-
-      setMonsters(filtered);
-      setCopyMonsters(JSON.parse(localStorage.getItem("monsters")));
-      return;
-    }
-
-    // more then one filter
-    if (filterTypes.length > 1) {
-      const filtered = copyMonsters.filter((monster) => {
-        if (filterTypes.length === 2) {
-          return (
-            Object.values(monster).includes(filterTypes.at(0)) &&
-            Object.values(monster).includes(filterTypes.at(1))
-          );
-        }
-
-        if (filterTypes.length === 2) {
-          return (
-            Object.values(monster).includes(filterTypes.at(0)) &&
-            Object.values(monster).includes(filterTypes.at(1)) &&
-            Object.values(monster).includes(filterTypes.at(2))
-          );
-        }
-
-        if (filterTypes.length === 3) {
-          return (
-            Object.values(monster).includes(filterTypes.at(0)) &&
-            Object.values(monster).includes(filterTypes.at(1)) &&
-            Object.values(monster).includes(filterTypes.at(2)) &&
-            Object.values(monster).includes(filterTypes.at(3))
-          );
-        }
-      });
-
-      setMonsters(filtered);
-      setCopyMonsters(JSON.parse(localStorage.getItem("monsters")));
-      return;
-    }
-  }
-
-  // onClick - reset filters
-  function handleResetFilters() {
-    setMonsters(JSON.parse(localStorage.getItem("monsters")));
-    setFilterBy({
-      type: null,
-      attribute: null,
-      race: null,
-      archetype: null,
-    });
   }
 
   return (
@@ -126,44 +35,14 @@ export default function NumOfResults({
       </div>
 
       {showFilter && (
-        <div className={styles.filterBox}>
-          <Filters
-            filterName={type}
-            filterType="type"
-            filterBy={filterBy}
-            setFilterBy={setFilterBy}
-          />
-          <Filters
-            filterName={attribute}
-            filterType="attribute"
-            filterBy={filterBy}
-            setFilterBy={setFilterBy}
-          />
-          <Filters
-            filterName={race}
-            filterType="race"
-            filterBy={filterBy}
-            setFilterBy={setFilterBy}
-          />
-          <Filters
-            filterName={archetypes}
-            filterType="archetype"
-            filterBy={filterBy}
-            setFilterBy={setFilterBy}
-          />
-          <button
-            className={styles.applyFilterBtn}
-            onClick={handleApplyFilters}
-          >
-            Apply Filters
-          </button>
-          <button
-            className={styles.resetFilterBtn}
-            onClick={handleResetFilters}
-          >
-            Reset
-          </button>
-        </div>
+        <Filters
+          copyMonsters={copyMonsters}
+          monsters={monsters}
+          setMonsters={setMonsters}
+          filterBy={filterBy}
+          setFilterBy={setFilterBy}
+          setCopyMonsters={setCopyMonsters}
+        />
       )}
     </div>
   );

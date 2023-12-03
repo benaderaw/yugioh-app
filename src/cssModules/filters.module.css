@@ -1,6 +1,51 @@
 .filters {
-  border: 1px solid rgb(179, 179, 179);
+  border: none;
   padding: 0.4rem;
   border-radius: 5px;
   width: 8rem;
+}
+
+.activeFilter {
+  border: none;
+  padding: 0.4rem;
+  border-radius: 5px;
+  width: 8rem;
+  background-color: rgb(97, 179, 255);
+}
+
+.filterContainer {
+  background: #242424;
+  padding: 20px 40px;
+  border-radius: 0 0 10px 10px;
+}
+
+.filterBox {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  margin-bottom: 1.5rem;
+}
+
+.filterButtonsBox {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.applyFilterBtn,
+.resetFilterBtn {
+  background-color: #efd981;
+  padding: 10px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  border-radius: 5px;
+  width: fit-content;
+  cursor: pointer;
+  transition: ease-in-out 0.2s;
+}
+
+.applyFilterBtn:hover,
+.resetFilterBtn:hover {
+  background-color: #eccb44;
 }

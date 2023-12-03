@@ -25,6 +25,17 @@ export default function App() {
       : JSON.parse(localStorage.getItem("collections"))
   );
   const [showCollection, setShowCollection] = useState(false);
+  const [showFilter, setShowFilter] = useState(false);
+  const [activeFilter, setActiveFilter] = useState(false);
+  const [filterBy, setFilterBy] = useState({
+    type: "select type",
+    attribute: "select attribute",
+    race: "select race",
+    archetype: "select archetype",
+    level: "select level",
+  });
+
+  // console.log(filterBy);
 
   return (
     <div className="App">
@@ -40,6 +51,7 @@ export default function App() {
           setError={setError}
           setLoading={setLoading}
           setShowCollection={setShowCollection}
+          setShowFilter={setShowFilter}
         />
         <Nav setShowCollection={setShowCollection} />
       </Navbar>
@@ -64,8 +76,11 @@ export default function App() {
                 setCopyMonsters={setCopyMonsters}
                 setSelected={setSelected}
                 name={name}
-                // filterBy={filterBy}
-                // setFilterBy={setFilterBy}
+                showFilter={showFilter}
+                activeFilter={activeFilter}
+                setActiveFilter={setActiveFilter}
+                filterBy={filterBy}
+                setFilterBy={setFilterBy}
               />
             )
           )}

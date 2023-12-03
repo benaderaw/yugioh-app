@@ -12,6 +12,7 @@ export default function Search({
   setError,
   setLoading,
   setShowCollection,
+  setShowFilter,
 }) {
   useEffect(() => {
     const fetchData = async function () {
@@ -34,6 +35,7 @@ export default function Search({
 
         setMonsters(JSON.parse(localStorage.getItem("monsters")));
         setCopyMonsters(JSON.parse(localStorage.getItem("monsters")));
+        setShowFilter(true);
       } catch (err) {
         setError(err);
         console.error(err);

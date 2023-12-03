@@ -30,16 +30,6 @@
   color: white;
 }
 
-/* .name:hover {
-  background-color: #ffbf00;
-  color: #1e1e1e;
-} */
-
 .cardImg {
   width: 95%;
-  /* transition: ease-in-out, 0.6s; */
 }
-
-/* .cardImg:hover {
-  width: 100%;
-} */
