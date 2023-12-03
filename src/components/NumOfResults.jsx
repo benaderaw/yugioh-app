@@ -7,7 +7,6 @@ import Filters from "./Filters";
 export default function NumOfResults({
   monsters,
   setMonsters,
-  name,
   copyMonsters,
   setCopyMonsters,
   // activeFilter,
@@ -25,9 +24,7 @@ export default function NumOfResults({
   return (
     <div className={styles.resultLengthContainer}>
       <div className={styles.resultLengthBox}>
-        <p>
-          {monsters.length} results found for {name}
-        </p>
+        <p>{monsters.length} results found</p>
         <IoFilter
           className={showFilter ? styles.filterIconOpen : styles.filterIcon}
           onClick={handleShowFilter}

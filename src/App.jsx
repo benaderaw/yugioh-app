@@ -1,5 +1,5 @@
-import { useState } from "react";
 import "./App.css";
+import { useState } from "react";
 import Navbar from "./components/Navbar";
 import Search from "./components/Search";
 import Nav from "./components/Nav";
@@ -35,8 +35,6 @@ export default function App() {
     level: "select level",
   });
 
-  // console.log(filterBy);
-
   return (
     <div className="App">
       <Navbar>
@@ -58,32 +56,33 @@ export default function App() {
 
       <Main>
         <Section>
-          {loading && <Loading />}
-          {error && !loading && <Error error={error} />}
-          {showCollection ? (
-            <Collections
-              setSelected={setSelected}
-              collection={collection}
-              setShowCollection={setShowCollection}
-            />
-          ) : (
-            !error &&
-            !loading && (
-              <Monsters
-                monsters={monsters}
-                setMonsters={setMonsters}
-                copyMonsters={copyMonsters}
-                setCopyMonsters={setCopyMonsters}
+          <div className={"sectionBox"}>
+            {loading && <Loading />}
+            {error && !loading && !showCollection && <Error error={error} />}
+            {showCollection ? (
+              <Collections
                 setSelected={setSelected}
-                name={name}
-                showFilter={showFilter}
-                activeFilter={activeFilter}
-                setActiveFilter={setActiveFilter}
-                filterBy={filterBy}
-                setFilterBy={setFilterBy}
+                collection={collection}
+                setShowCollection={setShowCollection}
               />
-            )
-          )}
+            ) : (
+              !error &&
+              !loading && (
+                <Monsters
+                  monsters={monsters}
+                  setMonsters={setMonsters}
+                  copyMonsters={copyMonsters}
+                  setCopyMonsters={setCopyMonsters}
+                  setSelected={setSelected}
+                  showFilter={showFilter}
+                  activeFilter={activeFilter}
+                  setActiveFilter={setActiveFilter}
+                  filterBy={filterBy}
+                  setFilterBy={setFilterBy}
+                />
+              )
+            )}
+          </div>
         </Section>
 
         <Section>

@@ -2,7 +2,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 0.7rem;
 
-  padding: 1rem;
+  padding: 5rem;
   color: white;
+}
+
+.loading img {
+  width: 1rem;
 }
