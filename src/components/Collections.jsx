@@ -7,6 +7,8 @@ export default function Collections({
   collection,
   setSelected,
   setShowCollection,
+  setHideDetailsLanding,
+  setShowDetails,
 }) {
   // onClick - close collection display and go back when back arrow button is clicked
   const handleBackBtn = useCallback(() => {
@@ -43,6 +45,8 @@ export default function Collections({
               key={monster.id}
               monster={monster}
               setSelected={setSelected}
+              setHideDetailsLanding={setHideDetailsLanding}
+              setShowDetails={setShowDetails}
             />
           ))}
         </ul>

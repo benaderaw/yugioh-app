@@ -16,6 +16,8 @@ export default function Monsters({
   setActiveFilter,
   filterBy,
   setFilterBy,
+  setHideDetailsLanding,
+  setShowDetails,
 }) {
   return (
     <div className={styles.monstersContainer}>
@@ -42,6 +44,8 @@ export default function Monsters({
               key={monster.id}
               monster={monster}
               setSelected={setSelected}
+              setHideDetailsLanding={setHideDetailsLanding}
+              setShowDetails={setShowDetails}
             />
           ))}
         </ul>

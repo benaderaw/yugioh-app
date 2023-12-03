@@ -10,10 +10,14 @@ import Section from "./components/Section";
 import Monsters from "./components/Monsters";
 import MonsterDetails from "./components/MonsterDetails";
 import Collections from "./components/Collections";
+import Landing from "./components/Landing";
+import DetailsLanding from "./components/DetailsLanding";
 
 export default function App() {
   const [query, setQuery] = useState("");
   const [name, setName] = useState("");
+  const [hideLanding, setHideLanding] = useState(false);
+  const [hideDetailsLanding, setHideDetailsLanding] = useState(false);
   const [monsters, setMonsters] = useState([]);
   const [copyMonsters, setCopyMonsters] = useState([]);
   const [error, setError] = useState("");
@@ -25,6 +29,8 @@ export default function App() {
       : JSON.parse(localStorage.getItem("collections"))
   );
   const [showCollection, setShowCollection] = useState(false);
+  const [showSearchResults, setShowSearchResults] = useState(false);
+  const [showDetails, setShowDetails] = useState(false);
   const [showFilter, setShowFilter] = useState(false);
   const [activeFilter, setActiveFilter] = useState(false);
   const [filterBy, setFilterBy] = useState({
@@ -50,48 +56,65 @@ export default function App() {
           setLoading={setLoading}
           setShowCollection={setShowCollection}
           setShowFilter={setShowFilter}
+          setHideLanding={setHideLanding}
+          setShowSearchResults={setShowSearchResults}
         />
-        <Nav setShowCollection={setShowCollection} />
+        <Nav
+          setShowCollection={setShowCollection}
+          setHideLanding={setHideLanding}
+          setHideDetailsLanding={setHideDetailsLanding}
+          setShowDetails={setShowDetails}
+          setShowSearchResults={setShowSearchResults}
+          setQuery={setQuery}
+          setName={setName}
+        />
       </Navbar>
 
       <Main>
         <Section>
-          <div className={"sectionBox"}>
-            {loading && <Loading />}
-            {error && !loading && !showCollection && <Error error={error} />}
-            {showCollection ? (
-              <Collections
+          {!hideLanding && !error && <Landing />}
+          {loading && <Loading />}
+          {error && !loading && !showCollection && <Error error={error} />}
+          {showCollection ? (
+            <Collections
+              setSelected={setSelected}
+              collection={collection}
+              setShowCollection={setShowCollection}
+              setHideDetailsLanding={setHideDetailsLanding}
+              setShowDetails={setShowDetails}
+            />
+          ) : (
+            !error &&
+            !loading &&
+            showSearchResults && (
+              <Monsters
+                monsters={monsters}
+                setMonsters={setMonsters}
+                copyMonsters={copyMonsters}
+                setCopyMonsters={setCopyMonsters}
                 setSelected={setSelected}
-                collection={collection}
-                setShowCollection={setShowCollection}
+                showFilter={showFilter}
+                activeFilter={activeFilter}
+                setActiveFilter={setActiveFilter}
+                filterBy={filterBy}
+                setFilterBy={setFilterBy}
+                setHideDetailsLanding={setHideDetailsLanding}
+                setShowDetails={setShowDetails}
               />
-            ) : (
-              !error &&
-              !loading && (
-                <Monsters
-                  monsters={monsters}
-                  setMonsters={setMonsters}
-                  copyMonsters={copyMonsters}
-                  setCopyMonsters={setCopyMonsters}
-                  setSelected={setSelected}
-                  showFilter={showFilter}
-                  activeFilter={activeFilter}
-                  setActiveFilter={setActiveFilter}
-                  filterBy={filterBy}
-                  setFilterBy={setFilterBy}
-                />
-              )
-            )}
-          </div>
+            )
+          )}
         </Section>
 
         <Section>
-          <MonsterDetails
-            selected={selected}
-            monsters={monsters}
-            collection={collection}
-            setCollection={setCollection}
-          />
+          {!hideDetailsLanding && <DetailsLanding />}
+          {showDetails && (
+            <MonsterDetails
+              selected={selected}
+              monsters={monsters}
+              collection={collection}
+              setCollection={setCollection}
+            />
+          )}
         </Section>
       </Main>
     </div>

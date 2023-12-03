@@ -1,0 +1,23 @@
+.landingContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+
+  height: 90%;
+}
+
+.landingImgBox {
+  display: flex;
+  justify-content: center;
+}
+
+.landingImg {
+  width: 80%;
+}
+
+.landingText h2 {
+  color: #fff;
+  font-size: 2rem;
+}

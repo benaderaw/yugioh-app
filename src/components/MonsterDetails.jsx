@@ -62,8 +62,6 @@ export default function MonsterDetails({
     setCollection([...collection, selected]);
   }
 
-  // console.log(collection);
-
   return (
     <>
       <div className={gods()}>

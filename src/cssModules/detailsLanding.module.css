@@ -1,0 +1,23 @@
+.detailsLandingContainer {
+  padding: 20px;
+}
+
+.detailsLandingBox {
+  padding: 20px;
+  background-color: #1d1d1d;
+  border-radius: 10px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.detailsLandingContainer img {
+  width: 95%;
+}
+
+.detailsLandingContainer h2 {
+  color: #fff;
+  text-align: center;
+}

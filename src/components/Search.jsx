@@ -13,6 +13,8 @@ export default function Search({
   setLoading,
   setShowCollection,
   setShowFilter,
+  setHideLanding,
+  setShowSearchResults,
 }) {
   useEffect(() => {
     const fetchData = async function () {
@@ -36,6 +38,8 @@ export default function Search({
         setMonsters(JSON.parse(localStorage.getItem("monsters")));
         setCopyMonsters(JSON.parse(localStorage.getItem("monsters")));
         setShowFilter(true);
+        setHideLanding(true);
+        setShowSearchResults(true);
       } catch (err) {
         setError(err);
         console.error(err);
@@ -45,7 +49,16 @@ export default function Search({
     };
 
     fetchData();
-  }, [name, setMonsters, setCopyMonsters, setError, setLoading]);
+  }, [
+    name,
+    setMonsters,
+    setCopyMonsters,
+    setError,
+    setLoading,
+    setHideLanding,
+    setShowSearchResults,
+    setShowFilter,
+  ]);
 
   // onChange - search input
   function handelSearch(e) {
