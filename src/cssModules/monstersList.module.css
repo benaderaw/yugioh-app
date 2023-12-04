@@ -1,0 +1,10 @@
+.monstersListBox {
+  padding: 20px 40px;
+  overflow: scroll;
+}
+
+.monstersList {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}

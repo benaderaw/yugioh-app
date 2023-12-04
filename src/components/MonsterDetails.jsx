@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import styles from "../cssModules/monsterDetails.module.css";
 import Details from "./Details";
 import MarketPrice from "./MarketPrice";
+import Button from "./Button";
 
 export default function MonsterDetails({
   selected,
@@ -71,12 +72,12 @@ export default function MonsterDetails({
               <img src={image} alt={name} className={styles.detailsImg} />
               <h2 className={styles.detailsName}>{name}</h2>
 
-              <button
+              <Button
                 onClick={handleAddToOrRemoveFromCollection}
-                className={isAdded ? styles.added : styles.add}
+                btnStyle={isAdded ? styles.added : styles.add}
               >
                 {isAdded ? "Remove from Collection" : "Add to Collection"}
-              </button>
+              </Button>
 
               <div className={styles.descBox}>
                 <p>

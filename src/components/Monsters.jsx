@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import styles from "../cssModules/monster.module.css";
-import Monster from "./Monster";
+import MonstersList from "./MonstersList";
 import NoResultsFound from "./NoResultsFound";
 import NumOfResults from "./NumOfResults";
 
@@ -37,19 +37,12 @@ export default function Monsters({
 
       {monsters.length === 0 && showResultNum && <NoResultsFound />}
 
-      <div className={styles.monstersBox}>
-        <ul className={styles.monstersList}>
-          {monsters.map((monster) => (
-            <Monster
-              key={monster.id}
-              monster={monster}
-              setSelected={setSelected}
-              setHideDetailsLanding={setHideDetailsLanding}
-              setShowDetails={setShowDetails}
-            />
-          ))}
-        </ul>
-      </div>
+      <MonstersList
+        xxx={monsters}
+        setSelected={setSelected}
+        setHideDetailsLanding={setHideDetailsLanding}
+        setShowDetails={setShowDetails}
+      />
     </div>
   );
 }

@@ -2,6 +2,7 @@
 import { useState } from "react";
 import styles from "../cssModules/filters.module.css";
 import Select from "./Select";
+import Button from "./Button";
 
 export default function Filters({
   filterBy,
@@ -10,6 +11,7 @@ export default function Filters({
   monsters,
   setMonsters,
   setCopyMonsters,
+  setShowFilter,
 }) {
   // create an array from the filter types (filter types passed as argument)
   const filters = function (filterType) {
@@ -66,6 +68,7 @@ export default function Filters({
 
       setMonsters(filtered);
       setCopyMonsters(JSON.parse(localStorage.getItem("monsters")));
+      setShowFilter(false);
       return;
     }
 
@@ -111,6 +114,7 @@ export default function Filters({
 
       setMonsters(filtered);
       setCopyMonsters(JSON.parse(localStorage.getItem("monsters")));
+      setShowFilter(false);
       return;
     }
   }
@@ -187,13 +191,14 @@ export default function Filters({
         />
       </div>
 
-      <div className={styles.filterButtonsBox}>
-        <button className={styles.applyFilterBtn} onClick={handleApplyFilters}>
+      <div className={styles.btnContainer}>
+        <Button btnStyle={styles.applyFilterBtn} onClick={handleApplyFilters}>
           Apply Filters
-        </button>
-        <button className={styles.resetFilterBtn} onClick={handleResetFilters}>
+        </Button>
+
+        <Button btnStyle={styles.resetFilterBtn} onClick={handleResetFilters}>
           Reset
-        </button>
+        </Button>
       </div>
     </div>
   );
