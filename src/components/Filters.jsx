@@ -5,8 +5,6 @@ import styles from "../cssModules/filters.module.css";
 export default function Filters({
   filterBy,
   setFilterBy,
-  // activeFilter,
-  // setActiveFilter,
   copyMonsters,
   monsters,
   setMonsters,
@@ -37,7 +35,7 @@ export default function Filters({
   const [archetype, setArchetype] = useState(filters("archetype"));
   const [level, setLevel] = useState(filters("level").sort(compareNumbers));
 
-  // onChange -
+  // onChange
   function handleFilter(e) {
     if (e.target.value.startsWith("Select".toLowerCase())) {
       return setFilterBy({ ...filterBy, [e.target.name]: e.target.value });
@@ -143,11 +141,23 @@ export default function Filters({
     setLevel(filters("level").sort(compareNumbers));
   }
 
+  // helper functions
+
+  // check if filter is selected
+  function activeFilter(filter) {
+    return filter.startsWith("select") ? styles.filters : styles.activeFilter;
+  }
+
   return (
     <div className={styles.filterContainer}>
       <div className={styles.filterBox}>
-        <select name="type" onChange={handleFilter} className={styles.filters}>
-          <option>select attribute</option>
+        <select
+          name="type"
+          onChange={handleFilter}
+          className={activeFilter(filterBy.type)}
+          value={filterBy.type}
+        >
+          <option>select type</option>
           {type.map((el, i) => (
             <option key={i}>{el}</option>
           ))}
@@ -156,7 +166,8 @@ export default function Filters({
         <select
           name="attribute"
           onChange={handleFilter}
-          className={styles.filters}
+          className={activeFilter(filterBy.attribute)}
+          value={filterBy.attribute}
         >
           <option>select attribute</option>
           {attribute.map((el, i) => (
@@ -164,7 +175,12 @@ export default function Filters({
           ))}
         </select>
 
-        <select name="race" onChange={handleFilter} className={styles.filters}>
+        <select
+          name="race"
+          onChange={handleFilter}
+          className={activeFilter(filterBy.race)}
+          value={filterBy.race}
+        >
           <option>select race</option>
           {race.map((el, i) => (
             <option key={i}>{el}</option>
@@ -174,7 +190,8 @@ export default function Filters({
         <select
           name="archetype"
           onChange={handleFilter}
-          className={styles.filters}
+          className={activeFilter(filterBy.archetype)}
+          value={filterBy.archetype}
         >
           <option>select archetype</option>
           {archetype.map((el, i) => (
@@ -182,7 +199,12 @@ export default function Filters({
           ))}
         </select>
 
-        <select name="level" onChange={handleFilter} className={styles.filters}>
+        <select
+          name="level"
+          onChange={handleFilter}
+          className={activeFilter(filterBy.level)}
+          value={filterBy.level}
+        >
           <option>select level</option>
           {level.map((el, i) => (
             <option key={i}>{el}</option>

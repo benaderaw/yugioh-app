@@ -9,8 +9,6 @@ export default function NumOfResults({
   setMonsters,
   copyMonsters,
   setCopyMonsters,
-  // activeFilter,
-  // setActiveFilter,
   filterBy,
   setFilterBy,
 }) {

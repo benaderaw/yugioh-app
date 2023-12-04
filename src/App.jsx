@@ -31,7 +31,7 @@ export default function App() {
   const [showCollection, setShowCollection] = useState(false);
   const [showSearchResults, setShowSearchResults] = useState(false);
   const [showDetails, setShowDetails] = useState(false);
-  const [showFilter, setShowFilter] = useState(false);
+  const [showResultNum, setShowResultNum] = useState(false);
   const [activeFilter, setActiveFilter] = useState(false);
   const [filterBy, setFilterBy] = useState({
     type: "select type",
@@ -55,7 +55,7 @@ export default function App() {
           setError={setError}
           setLoading={setLoading}
           setShowCollection={setShowCollection}
-          setShowFilter={setShowFilter}
+          setShowResultNum={setShowResultNum}
           setHideLanding={setHideLanding}
           setShowSearchResults={setShowSearchResults}
         />
@@ -93,7 +93,7 @@ export default function App() {
                 copyMonsters={copyMonsters}
                 setCopyMonsters={setCopyMonsters}
                 setSelected={setSelected}
-                showFilter={showFilter}
+                showResultNum={showResultNum}
                 activeFilter={activeFilter}
                 setActiveFilter={setActiveFilter}
                 filterBy={filterBy}

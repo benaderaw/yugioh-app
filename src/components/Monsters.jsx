@@ -11,7 +11,7 @@ export default function Monsters({
   name,
   copyMonsters,
   setCopyMonsters,
-  showFilter,
+  showResultNum,
   activeFilter,
   setActiveFilter,
   filterBy,
@@ -21,7 +21,7 @@ export default function Monsters({
 }) {
   return (
     <div className={styles.monstersContainer}>
-      {showFilter && (
+      {showResultNum && (
         <NumOfResults
           monsters={monsters}
           setMonsters={setMonsters}
@@ -35,7 +35,7 @@ export default function Monsters({
         />
       )}
 
-      {monsters.length === 0 && showFilter && <NoResultsFound />}
+      {monsters.length === 0 && showResultNum && <NoResultsFound />}
 
       <div className={styles.monstersBox}>
         <ul className={styles.monstersList}>

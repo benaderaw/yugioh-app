@@ -12,7 +12,7 @@ export default function Search({
   setError,
   setLoading,
   setShowCollection,
-  setShowFilter,
+  setShowResultNum,
   setHideLanding,
   setShowSearchResults,
 }) {
@@ -37,7 +37,7 @@ export default function Search({
 
         setMonsters(JSON.parse(localStorage.getItem("monsters")));
         setCopyMonsters(JSON.parse(localStorage.getItem("monsters")));
-        setShowFilter(true);
+        setShowResultNum(true);
         setHideLanding(true);
         setShowSearchResults(true);
       } catch (err) {
@@ -57,7 +57,7 @@ export default function Search({
     setLoading,
     setHideLanding,
     setShowSearchResults,
-    setShowFilter,
+    setShowResultNum,
   ]);
 
   // onChange - search input
