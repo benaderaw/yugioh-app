@@ -1,7 +1,8 @@
 /* eslint-disable react/prop-types */
-import { useCallback, useEffect } from "react";
+import { useCallback } from "react";
 import styles from "../cssModules/monster.module.css";
 import Monster from "./Monster";
+import { useKey } from "../custom hooks/useKey";
 
 export default function Collections({
   collection,
@@ -15,19 +16,8 @@ export default function Collections({
     setShowCollection(false);
   }, [setShowCollection]);
 
-  // useEffect - close collection display and go back when Escape key is pressed
-  useEffect(() => {
-    const callback = function (e) {
-      if (e.key === "Escape") handleBackBtn();
-    };
-
-    document.addEventListener("keydown", callback);
-
-    // clean up
-    return () => {
-      document.removeEventListener("keydown", callback);
-    };
-  }, [handleBackBtn]);
+  // custom hook - focus input when "enter" key is pressed
+  useKey("Escape", handleBackBtn);
 
   return (
     <div className={styles.monstersContainer}>

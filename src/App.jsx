@@ -12,16 +12,11 @@ import MonsterDetails from "./components/MonsterDetails";
 import Collections from "./components/Collections";
 import Landing from "./components/Landing";
 import DetailsLanding from "./components/DetailsLanding";
+import { useFetch } from "./custom hooks/useFetch";
 
 export default function App() {
   const [query, setQuery] = useState("");
-  const [name, setName] = useState("");
-  const [hideLanding, setHideLanding] = useState(false);
   const [hideDetailsLanding, setHideDetailsLanding] = useState(false);
-  const [monsters, setMonsters] = useState([]);
-  const [copyMonsters, setCopyMonsters] = useState([]);
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
   const [selected, setSelected] = useState("");
   const [collection, setCollection] = useState(
     JSON.parse(localStorage.getItem("collections")) === null
@@ -29,17 +24,26 @@ export default function App() {
       : JSON.parse(localStorage.getItem("collections"))
   );
   const [showCollection, setShowCollection] = useState(false);
-  const [showSearchResults, setShowSearchResults] = useState(false);
   const [showDetails, setShowDetails] = useState(false);
-  const [showResultNum, setShowResultNum] = useState(false);
   const [activeFilter, setActiveFilter] = useState(false);
-  const [filterBy, setFilterBy] = useState({
-    type: "select type",
-    attribute: "select attribute",
-    race: "select race",
-    archetype: "select archetype",
-    level: "select level",
-  });
+
+  // hooks
+  const {
+    setName,
+    monsters,
+    setMonsters,
+    copyMonsters,
+    setCopyMonsters,
+    error,
+    loading,
+    hideLanding,
+    setHideLanding,
+    showSearchResults,
+    setShowSearchResults,
+    showResultNum,
+    filterBy,
+    setFilterBy,
+  } = useFetch();
 
   return (
     <div className="App">
@@ -47,17 +51,8 @@ export default function App() {
         <Search
           query={query}
           setQuery={setQuery}
-          name={name}
           setName={setName}
-          monsters={monsters}
-          setMonsters={setMonsters}
-          setCopyMonsters={setCopyMonsters}
-          setError={setError}
-          setLoading={setLoading}
           setShowCollection={setShowCollection}
-          setShowResultNum={setShowResultNum}
-          setHideLanding={setHideLanding}
-          setShowSearchResults={setShowSearchResults}
         />
         <Nav
           setShowCollection={setShowCollection}
@@ -67,6 +62,7 @@ export default function App() {
           setShowSearchResults={setShowSearchResults}
           setQuery={setQuery}
           setName={setName}
+          setFilterBy={setFilterBy}
         />
       </Navbar>
 

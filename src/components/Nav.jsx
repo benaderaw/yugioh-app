@@ -9,6 +9,7 @@ export default function Nav({
   setShowSearchResults,
   setQuery,
   setName,
+  setFilterBy,
 }) {
   function handleShowCollection() {
     setShowCollection(true);
@@ -23,6 +24,13 @@ export default function Nav({
     setShowSearchResults(false);
     setQuery("");
     setName("");
+    setFilterBy({
+      type: "select type",
+      attribute: "select attribute",
+      race: "select race",
+      archetype: "select archetype",
+      level: "select level",
+    });
   }
 
   return (

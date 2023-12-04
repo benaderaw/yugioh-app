@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
 import styles from "../cssModules/filters.module.css";
+import Select from "./Select";
 
 export default function Filters({
   filterBy,
@@ -65,7 +66,6 @@ export default function Filters({
 
       setMonsters(filtered);
       setCopyMonsters(JSON.parse(localStorage.getItem("monsters")));
-      // setShowFilter(false);
       return;
     }
 
@@ -73,8 +73,6 @@ export default function Filters({
     if (filterTypes.length > 1) {
       const filtered = copyMonsters.filter((monster) => {
         const valuesArray = Object.values(monster).map((el) => String(el));
-
-        console.log(valuesArray);
 
         if (filterTypes.length === 2) {
           return (
@@ -111,11 +109,8 @@ export default function Filters({
         }
       });
 
-      // if (filtered.length === 0) return;
-
       setMonsters(filtered);
       setCopyMonsters(JSON.parse(localStorage.getItem("monsters")));
-      // setShowFilter(false);
       return;
     }
   }
@@ -127,6 +122,7 @@ export default function Filters({
         ? JSON.parse(localStorage.getItem("monsters"))
         : []
     );
+
     setFilterBy({
       type: "select type",
       attribute: "select attribute",
@@ -134,6 +130,7 @@ export default function Filters({
       archetype: "select archetype",
       level: "select level",
     });
+
     setType(filters("type"));
     setAttribute(filters("attribute"));
     setRace(filters("race"));
@@ -141,9 +138,7 @@ export default function Filters({
     setLevel(filters("level").sort(compareNumbers));
   }
 
-  // helper functions
-
-  // check if filter is selected
+  // helper function - check if filter is selected
   function activeFilter(filter) {
     return filter.startsWith("select") ? styles.filters : styles.activeFilter;
   }
@@ -151,65 +146,45 @@ export default function Filters({
   return (
     <div className={styles.filterContainer}>
       <div className={styles.filterBox}>
-        <select
-          name="type"
+        <Select
+          name={"type"}
           onChange={handleFilter}
           className={activeFilter(filterBy.type)}
           value={filterBy.type}
-        >
-          <option>select type</option>
-          {type.map((el, i) => (
-            <option key={i}>{el}</option>
-          ))}
-        </select>
+          filter={type}
+        />
 
-        <select
-          name="attribute"
+        <Select
+          name={"attribute"}
           onChange={handleFilter}
           className={activeFilter(filterBy.attribute)}
           value={filterBy.attribute}
-        >
-          <option>select attribute</option>
-          {attribute.map((el, i) => (
-            <option key={i}>{el}</option>
-          ))}
-        </select>
+          filter={attribute}
+        />
 
-        <select
-          name="race"
+        <Select
+          name={"race"}
           onChange={handleFilter}
           className={activeFilter(filterBy.race)}
           value={filterBy.race}
-        >
-          <option>select race</option>
-          {race.map((el, i) => (
-            <option key={i}>{el}</option>
-          ))}
-        </select>
+          filter={race}
+        />
 
-        <select
-          name="archetype"
+        <Select
+          name={"archetype"}
           onChange={handleFilter}
           className={activeFilter(filterBy.archetype)}
           value={filterBy.archetype}
-        >
-          <option>select archetype</option>
-          {archetype.map((el, i) => (
-            <option key={i}>{el}</option>
-          ))}
-        </select>
+          filter={archetype}
+        />
 
-        <select
-          name="level"
+        <Select
+          name={"level"}
           onChange={handleFilter}
           className={activeFilter(filterBy.level)}
           value={filterBy.level}
-        >
-          <option>select level</option>
-          {level.map((el, i) => (
-            <option key={i}>{el}</option>
-          ))}
-        </select>
+          filter={level}
+        />
       </div>
 
       <div className={styles.filterButtonsBox}>
