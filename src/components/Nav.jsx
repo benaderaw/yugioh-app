@@ -10,6 +10,7 @@ export default function Nav({
   setQuery,
   setName,
   setFilterBy,
+  setFilteredMonsters,
 }) {
   function handleShowCollection() {
     setShowCollection(true);
@@ -17,6 +18,7 @@ export default function Nav({
   }
 
   function handleHome() {
+    setFilteredMonsters([{ showFiltered: false }, []]);
     setShowCollection(false);
     setHideLanding(false);
     setHideDetailsLanding(false);

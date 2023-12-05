@@ -9,8 +9,6 @@ export default function Monsters({
   setMonsters,
   setSelected,
   name,
-  copyMonsters,
-  setCopyMonsters,
   showResultNum,
   activeFilter,
   setActiveFilter,
@@ -18,6 +16,8 @@ export default function Monsters({
   setFilterBy,
   setHideDetailsLanding,
   setShowDetails,
+  filteredMonsters,
+  setFilteredMonsters,
 }) {
   return (
     <div className={styles.monstersContainer}>
@@ -26,23 +26,36 @@ export default function Monsters({
           monsters={monsters}
           setMonsters={setMonsters}
           name={name}
-          copyMonsters={copyMonsters}
-          setCopyMonsters={setCopyMonsters}
           activeFilter={activeFilter}
           setActiveFilter={setActiveFilter}
           filterBy={filterBy}
           setFilterBy={setFilterBy}
+          filteredMonsters={filteredMonsters}
+          setFilteredMonsters={setFilteredMonsters}
         />
       )}
 
-      {monsters.length === 0 && showResultNum && <NoResultsFound />}
+      {filteredMonsters.at(0).showFiltered &&
+        filteredMonsters.at(1).length === 0 &&
+        showResultNum && <NoResultsFound />}
 
-      <MonstersList
-        xxx={monsters}
-        setSelected={setSelected}
-        setHideDetailsLanding={setHideDetailsLanding}
-        setShowDetails={setShowDetails}
-      />
+      {filteredMonsters.at(0).showFiltered && (
+        <MonstersList
+          xxx={filteredMonsters.at(1)}
+          setSelected={setSelected}
+          setHideDetailsLanding={setHideDetailsLanding}
+          setShowDetails={setShowDetails}
+        />
+      )}
+
+      {!filteredMonsters.at(0).showFiltered && (
+        <MonstersList
+          xxx={monsters}
+          setSelected={setSelected}
+          setHideDetailsLanding={setHideDetailsLanding}
+          setShowDetails={setShowDetails}
+        />
+      )}
     </div>
   );
 }

@@ -6,30 +6,32 @@ import FilterIcon from "./FilterIcon";
 
 export default function NumOfResults({
   monsters,
-  setMonsters,
-  copyMonsters,
-  setCopyMonsters,
   filterBy,
   setFilterBy,
+  filteredMonsters,
+  setFilteredMonsters,
 }) {
   const [showFilter, setShowFilter] = useState(false);
 
   return (
     <div className={styles.resultLengthContainer}>
       <div className={styles.resultLengthBox}>
-        <p>{monsters.length} results found</p>
+        <p>
+          {filteredMonsters.at(0).showFiltered
+            ? filteredMonsters.at(1).length
+            : monsters.length}{" "}
+          results found
+        </p>
         <FilterIcon showFilter={showFilter} setShowFilter={setShowFilter} />
       </div>
 
       {showFilter && (
         <Filters
-          copyMonsters={copyMonsters}
           monsters={monsters}
-          setMonsters={setMonsters}
           filterBy={filterBy}
           setFilterBy={setFilterBy}
-          setCopyMonsters={setCopyMonsters}
           setShowFilter={setShowFilter}
+          setFilteredMonsters={setFilteredMonsters}
         />
       )}
     </div>

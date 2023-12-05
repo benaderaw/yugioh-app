@@ -7,17 +7,15 @@ import Button from "./Button";
 export default function Filters({
   filterBy,
   setFilterBy,
-  copyMonsters,
   monsters,
-  setMonsters,
-  setCopyMonsters,
   setShowFilter,
+  setFilteredMonsters,
 }) {
   // create an array from the filter types (filter types passed as argument)
   const filters = function (filterType) {
     return Array.from(
       new Set(
-        copyMonsters
+        monsters
           .map((monster) => {
             return monster[filterType];
           })
@@ -52,80 +50,23 @@ export default function Filters({
       (fill) => !fill?.startsWith("select".toLowerCase())
     );
 
-    // no filter
-    if (filterTypes.length === 0) {
-      setMonsters(JSON.parse(localStorage.getItem("monsters")));
-      return;
-    }
+    const filtered = monsters.filter((monster) => {
+      const monsterValues = Object.values(monster);
 
-    // one filter
-    if (filterTypes.length === 1) {
-      const filtered = copyMonsters.filter((monster) => {
-        const valuesArray = Object.values(monster).map((el) => String(el));
-
-        return valuesArray.includes(filterTypes.at(0));
+      const filters = filterTypes.filter((filter) => {
+        return monsterValues.includes(filter);
       });
 
-      setMonsters(filtered);
-      setCopyMonsters(JSON.parse(localStorage.getItem("monsters")));
-      setShowFilter(false);
-      return;
-    }
+      return filters.length === filterTypes.length && monster;
+    });
 
-    // more then one filter
-    if (filterTypes.length > 1) {
-      const filtered = copyMonsters.filter((monster) => {
-        const valuesArray = Object.values(monster).map((el) => String(el));
-
-        if (filterTypes.length === 2) {
-          return (
-            valuesArray.includes(filterTypes.at(0)) &&
-            valuesArray.includes(filterTypes.at(1))
-          );
-        }
-
-        if (filterTypes.length === 3) {
-          return (
-            valuesArray.includes(filterTypes.at(0)) &&
-            valuesArray.includes(filterTypes.at(1)) &&
-            valuesArray.includes(filterTypes.at(2))
-          );
-        }
-
-        if (filterTypes.length === 4) {
-          return (
-            valuesArray.includes(filterTypes.at(0)) &&
-            valuesArray.includes(filterTypes.at(1)) &&
-            valuesArray.includes(filterTypes.at(2)) &&
-            valuesArray.includes(filterTypes.at(3))
-          );
-        }
-
-        if (filterTypes.length === 5) {
-          return (
-            valuesArray.includes(filterTypes.at(0)) &&
-            valuesArray.includes(filterTypes.at(1)) &&
-            valuesArray.includes(filterTypes.at(2)) &&
-            valuesArray.includes(filterTypes.at(3)) &&
-            valuesArray.includes(filterTypes.at(4))
-          );
-        }
-      });
-
-      setMonsters(filtered);
-      setCopyMonsters(JSON.parse(localStorage.getItem("monsters")));
-      setShowFilter(false);
-      return;
-    }
+    setFilteredMonsters([{ showFiltered: true }, [...filtered]]);
+    setShowFilter(false);
   }
 
   // onClick - reset filters
   function handleResetFilters() {
-    setMonsters(
-      monsters.length > 0 || monsters.length === 0
-        ? JSON.parse(localStorage.getItem("monsters"))
-        : []
-    );
+    setFilteredMonsters([{ showFiltered: false }, []]);
 
     setFilterBy({
       type: "select type",

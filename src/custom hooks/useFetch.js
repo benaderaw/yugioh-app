@@ -4,7 +4,6 @@ export function useFetch() {
   // STATES
   const [name, setName] = useState("");
   const [monsters, setMonsters] = useState([]);
-  const [copyMonsters, setCopyMonsters] = useState([]);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [showResultNum, setShowResultNum] = useState(false);
@@ -39,7 +38,6 @@ export function useFetch() {
         localStorage.setItem("monsters", JSON.stringify(data));
 
         setMonsters(JSON.parse(localStorage.getItem("monsters")));
-        setCopyMonsters(JSON.parse(localStorage.getItem("monsters")));
         setShowResultNum(true);
         setHideLanding(true);
         setShowSearchResults(true);
@@ -62,7 +60,6 @@ export function useFetch() {
   }, [
     name,
     setMonsters,
-    setCopyMonsters,
     setError,
     setLoading,
     setHideLanding,
@@ -75,8 +72,6 @@ export function useFetch() {
     setName,
     monsters,
     setMonsters,
-    copyMonsters,
-    setCopyMonsters,
     error,
     setError,
     loading,

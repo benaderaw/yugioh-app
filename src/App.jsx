@@ -26,14 +26,17 @@ export default function App() {
   const [showCollection, setShowCollection] = useState(false);
   const [showDetails, setShowDetails] = useState(false);
   const [activeFilter, setActiveFilter] = useState(false);
+  const [filteredMonsters, setFilteredMonsters] = useState([
+    { showFiltered: false },
+    [],
+  ]);
 
+  console.log(filteredMonsters);
   // hooks
   const {
     setName,
     monsters,
     setMonsters,
-    copyMonsters,
-    setCopyMonsters,
     error,
     loading,
     hideLanding,
@@ -63,6 +66,7 @@ export default function App() {
           setQuery={setQuery}
           setName={setName}
           setFilterBy={setFilterBy}
+          setFilteredMonsters={setFilteredMonsters}
         />
       </Navbar>
 
@@ -86,8 +90,6 @@ export default function App() {
               <Monsters
                 monsters={monsters}
                 setMonsters={setMonsters}
-                copyMonsters={copyMonsters}
-                setCopyMonsters={setCopyMonsters}
                 setSelected={setSelected}
                 showResultNum={showResultNum}
                 activeFilter={activeFilter}
@@ -96,6 +98,8 @@ export default function App() {
                 setFilterBy={setFilterBy}
                 setHideDetailsLanding={setHideDetailsLanding}
                 setShowDetails={setShowDetails}
+                filteredMonsters={filteredMonsters}
+                setFilteredMonsters={setFilteredMonsters}
               />
             )
           )}
