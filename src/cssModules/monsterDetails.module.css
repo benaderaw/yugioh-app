@@ -1,7 +1,11 @@
 .detailsContainer {
   color: #fff;
+  width: 100%;
+  height: 77vh;
+  border-radius: 15px;
   padding: 20px;
   overflow: scroll;
+  transition: ease-in, 2s;
 }
 
 .detailsContainerSlifer,
@@ -9,11 +13,7 @@
 .detailsContainerRa,
 .detailsContainerHolactie {
   color: #fff;
-  width: 100%;
-  height: 77vh;
-  border-radius: 15px;
   padding: 20px;
-  overflow: scroll;
   transition: ease-in, 2s;
 }
 

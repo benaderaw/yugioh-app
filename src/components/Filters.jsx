@@ -19,10 +19,20 @@ export default function Filters({
           .map((monster) => {
             return monster[filterType];
           })
-          .filter((filters) => filters)
+          .filter((filter) => filter)
       )
     );
   };
+
+  console.log(
+    Array.from(
+      monsters
+        .map((monster) => {
+          return monster.attribute;
+        })
+        .filter((filter) => filter)
+    )
+  );
 
   // sort
   function compareNumbers(a, b) {
@@ -60,13 +70,13 @@ export default function Filters({
       return filters.length === filterTypes.length && monster;
     });
 
-    setFilteredMonsters([{ showFiltered: true }, [...filtered]]);
+    setFilteredMonsters([[true], [...filtered]]);
     setShowFilter(false);
   }
 
   // onClick - reset filters
   function handleResetFilters() {
-    setFilteredMonsters([{ showFiltered: false }, []]);
+    setFilteredMonsters([[false], []]);
 
     setFilterBy({
       type: "select type",

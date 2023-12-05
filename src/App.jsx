@@ -26,13 +26,10 @@ export default function App() {
   const [showCollection, setShowCollection] = useState(false);
   const [showDetails, setShowDetails] = useState(false);
   const [activeFilter, setActiveFilter] = useState(false);
-  const [filteredMonsters, setFilteredMonsters] = useState([
-    { showFiltered: false },
-    [],
-  ]);
+  const [showFilter, setShowFilter] = useState(false);
+  const [filteredMonsters, setFilteredMonsters] = useState([[false], []]);
 
-  console.log(filteredMonsters);
-  // hooks
+  // custom hook - fetch api data
   const {
     setName,
     monsters,
@@ -56,6 +53,8 @@ export default function App() {
           setQuery={setQuery}
           setName={setName}
           setShowCollection={setShowCollection}
+          setFilteredMonsters={setFilteredMonsters}
+          setFilterBy={setFilterBy}
         />
         <Nav
           setShowCollection={setShowCollection}
@@ -67,6 +66,7 @@ export default function App() {
           setName={setName}
           setFilterBy={setFilterBy}
           setFilteredMonsters={setFilteredMonsters}
+          setShowFilter={setShowFilter}
         />
       </Navbar>
 
@@ -82,6 +82,12 @@ export default function App() {
               setShowCollection={setShowCollection}
               setHideDetailsLanding={setHideDetailsLanding}
               setShowDetails={setShowDetails}
+              showFilter={showFilter}
+              setShowFilter={setShowFilter}
+              filterBy={filterBy}
+              setFilterBy={setFilterBy}
+              filteredMonsters={filteredMonsters}
+              setFilteredMonsters={setFilteredMonsters}
             />
           ) : (
             !error &&
@@ -100,6 +106,8 @@ export default function App() {
                 setShowDetails={setShowDetails}
                 filteredMonsters={filteredMonsters}
                 setFilteredMonsters={setFilteredMonsters}
+                showFilter={showFilter}
+                setShowFilter={setShowFilter}
               />
             )
           )}

@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react";
 import styles from "../cssModules/numOfResults.module.css";
 import Filters from "./Filters";
 import FilterIcon from "./FilterIcon";
@@ -10,14 +9,14 @@ export default function NumOfResults({
   setFilterBy,
   filteredMonsters,
   setFilteredMonsters,
+  showFilter,
+  setShowFilter,
 }) {
-  const [showFilter, setShowFilter] = useState(false);
-
   return (
     <div className={styles.resultLengthContainer}>
       <div className={styles.resultLengthBox}>
         <p>
-          {filteredMonsters.at(0).showFiltered
+          {filteredMonsters.at(0).at(0)
             ? filteredMonsters.at(1).length
             : monsters.length}{" "}
           results found

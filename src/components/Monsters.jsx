@@ -18,6 +18,8 @@ export default function Monsters({
   setShowDetails,
   filteredMonsters,
   setFilteredMonsters,
+  showFilter,
+  setShowFilter,
 }) {
   return (
     <div className={styles.monstersContainer}>
@@ -32,14 +34,16 @@ export default function Monsters({
           setFilterBy={setFilterBy}
           filteredMonsters={filteredMonsters}
           setFilteredMonsters={setFilteredMonsters}
+          showFilter={showFilter}
+          setShowFilter={setShowFilter}
         />
       )}
 
-      {filteredMonsters.at(0).showFiltered &&
+      {filteredMonsters.at(0).at(0) &&
         filteredMonsters.at(1).length === 0 &&
         showResultNum && <NoResultsFound />}
 
-      {filteredMonsters.at(0).showFiltered && (
+      {filteredMonsters.at(0).at(0) && (
         <MonstersList
           xxx={filteredMonsters.at(1)}
           setSelected={setSelected}
@@ -48,7 +52,7 @@ export default function Monsters({
         />
       )}
 
-      {!filteredMonsters.at(0).showFiltered && (
+      {!filteredMonsters.at(0).at(0) && (
         <MonstersList
           xxx={monsters}
           setSelected={setSelected}

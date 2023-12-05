@@ -11,14 +11,24 @@ export default function Nav({
   setName,
   setFilterBy,
   setFilteredMonsters,
+  setShowFilter,
 }) {
   function handleShowCollection() {
+    setShowFilter(false);
     setShowCollection(true);
     setHideLanding(true);
+    setFilteredMonsters([[false], []]);
+    setFilterBy({
+      type: "select type",
+      attribute: "select attribute",
+      race: "select race",
+      archetype: "select archetype",
+      level: "select level",
+    });
   }
 
   function handleHome() {
-    setFilteredMonsters([{ showFiltered: false }, []]);
+    setFilteredMonsters([[false], []]);
     setShowCollection(false);
     setHideLanding(false);
     setHideDetailsLanding(false);

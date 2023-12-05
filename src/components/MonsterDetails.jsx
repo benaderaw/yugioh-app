@@ -36,7 +36,7 @@ export default function MonsterDetails({
     if (id === 10000010 || id === 10000080 || id === 10000090)
       return styles.detailsContainerRa;
 
-    //10000040
+    // Holactie
     if (id === 10000040) return styles.detailsContainerHolactie;
 
     return styles.detailsContainer;

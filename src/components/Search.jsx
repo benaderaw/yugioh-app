@@ -8,6 +8,8 @@ export default function Search({
   setQuery,
   setName,
   setShowCollection,
+  setFilteredMonsters,
+  setFilterBy,
 }) {
   // onChange - search input
   function handelSearch(e) {
@@ -20,6 +22,14 @@ export default function Search({
 
     setName(query);
     setShowCollection(false);
+    setFilteredMonsters([[false], []]);
+    setFilterBy({
+      type: "select type",
+      attribute: "select attribute",
+      race: "select race",
+      archetype: "select archetype",
+      level: "select level",
+    });
   }
 
   //

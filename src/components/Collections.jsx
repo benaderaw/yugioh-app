@@ -2,7 +2,6 @@
 import { useCallback } from "react";
 // import styles from "../cssModules/monster.module.css";
 import styles from "../cssModules/collection.module.css";
-import Monster from "./Monster";
 import { useKey } from "../custom hooks/useKey";
 import Filters from "./Filters";
 import FilterIcon from "./FilterIcon";
@@ -15,6 +14,13 @@ export default function Collections({
   setShowCollection,
   setHideDetailsLanding,
   setShowDetails,
+  showFilter,
+  setShowFilter,
+
+  filterBy,
+  setFilterBy,
+  filteredMonsters,
+  setFilteredMonsters,
 }) {
   // onClick - close collection display and go back when back arrow button is clicked
   const handleBackBtn = useCallback(() => {
@@ -34,15 +40,38 @@ export default function Collections({
           <h1> My Collections</h1>
         </div>
 
-        <FilterIcon />
+        <FilterIcon showFilter={showFilter} setShowFilter={setShowFilter} />
       </div>
 
-      <MonstersList
-        xxx={collection}
-        setSelected={setSelected}
-        setHideDetailsLanding={setHideDetailsLanding}
-        setShowDetails={setShowDetails}
-      />
+      {showFilter && (
+        <Filters
+          monsters={collection}
+          filterBy={filterBy}
+          setFilterBy={setFilterBy}
+          setShowFilter={setShowFilter}
+          filter={setFilteredMonsters}
+          filteredMonsters={filteredMonsters}
+          setFilteredMonsters={setFilteredMonsters}
+        />
+      )}
+
+      {filteredMonsters.at(0).at(0) && (
+        <MonstersList
+          xxx={filteredMonsters.at(1)}
+          setSelected={setSelected}
+          setHideDetailsLanding={setHideDetailsLanding}
+          setShowDetails={setShowDetails}
+        />
+      )}
+
+      {!filteredMonsters.at(0).at(0) && (
+        <MonstersList
+          xxx={collection}
+          setSelected={setSelected}
+          setHideDetailsLanding={setHideDetailsLanding}
+          setShowDetails={setShowDetails}
+        />
+      )}
     </div>
   );
 }
