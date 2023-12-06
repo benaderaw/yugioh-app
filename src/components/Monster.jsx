@@ -21,9 +21,9 @@ export default function Monster({
           alt=""
           className={styles.cardImg}
         />
-        <div className={styles.name}>
-          <h2>{monster.name}</h2>
-        </div>
+        {/* <div className={styles.name}> */}
+        {/* <h2>{monster.name}</h2> */}
+        {/* </div> */}
       </li>
     </>
   );
